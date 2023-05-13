@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+  </head>
+  <body>
+    <div class="container-fluid">
+        <div class="p-5 d-flex flex-row justify-content-around align-items-center">
+            <div class="p-3 mb-5 shadow-lg bg-body-tertiary rounded text-primary bg-body-secondary d-flex flex-md-column justify-content-around align-items-center"
+                style="height: 75%; width: 25%;">
+                <!-- register -->
+                <h1 class="p-3">Register</h1>
+                {% with messages = get_flashed_messages(category_filter=['users']) %}     <!-- declare a variable called messages -->
+                    {% if messages %}                            <!-- check if there are any messages -->
+                        {% for message in messages %}            <!-- loop through the messages -->
+                            <p class="text-danger">{{message}}</p>                   <!-- display each message in a paragraph tag -->
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+
+                <form action="/users/register" method="post">
+                    <div class="mb-3">
+                        <label  class="form-label">First Name:</label>
+                        <input type="text" class="form-control" name="first_name">
+                    </div>
+                    <div class="mb-3">
+                        <label  class="form-label">Last Name:</label>
+                        <input type="text" class="form-control" name="last_name">
+                    </div>
+                    <div class="mb-3">
+                        <label  class="form-label">Email address:</label>
+                        <input type="email" class="form-control" name="email">
+                        <div  class="form-text">We'll never share your email with anyone else.</div>
+                    </div>
+                    <div class="mb-3">
+                        <label  class="form-label">Password:</label>
+                        <input type="password" class="form-control" name="password">
+                    </div>
+                    <div class="mb-3">
+                        <label  class="form-label"> Confirm Password:</label>
+                        <input type="password" class="form-control" name="confirm_pw">
+                    </div>
+                    <div class="mb-3 form-check">
+                        <input type="checkbox" class="form-check-input" >
+                        <label class="form-check-label" ">Check me out</label>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+            <div class="p-3 mb-2 mb-5 shadow-lg bg-body-tertiary text-success bg-body-secondary d-flex flex-column justify-content-around align-items-center"
+                style="height: 75%; width: 25%;">
+                <!-- login -->
+                <h1 class="p-3">Login</h1>
+                {% with messages = get_flashed_messages(category_filter=['login']) %}     <!-- declare a variable called messages -->
+                    {% if messages %}                            <!-- check if there are any messages -->
+                        {% for message in messages %}            <!-- loop through the messages -->
+                            <p class="text-danger">{{message}}</p>                   <!-- display each message in a paragraph tag -->
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+                <form action="/users/login" method="post">
+                    <div class="mb-3">
+                        <label  class="form-label">Email address:</label>
+                        <input type="email" class="form-control" name="email">
+                        <div  class="form-text">We'll never share your email with anyone else.</div>
+                    </div>
+                    <div class="mb-3">
+                        <label  class="form-label">Password:</label>
+                        <input type="password" class="form-control" name="password">
+                    </div>
+                    <div class="mb-3 form-check">
+                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                        <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                    </div>
+                    <button type="submit" class="btn btn-success">Submit</button>
+                </form>
+            </div>
+        </div> 
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+  </body>
+</html>
